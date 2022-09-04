@@ -42,15 +42,23 @@ In non-interactive mode
 $ echo "help" | ./console.py
 ***
 (hbnb)
-
+***
 Documented commands (type help <topic>):
+***
 ========================================
+***
 EOF  help  quit
-(hbnb) 
+***
+(hbnb)
+*** 
 $
+***
 $ cat test_help
+***
 help
+***
 $
+***
 $ cat test_help | ./console.py
 (hbnb)
 
@@ -60,11 +68,11 @@ EOF  help  quit
 (hbnb) 
 $
 
-**Tests**
+#**Tests**
 
 All tests are defined in the tests folder and the codes tested with the unittest module.
 
-**Documentation**
+#**Documentation**
 
 *Modules:
 
@@ -82,7 +90,7 @@ and
 
 python3 -c 'print(__import__("my_module").MyClass.my_function.doc__)'
 
-**Usage**
+#**Usage**
 
 Start console in interactive mode:
 
@@ -104,6 +112,6 @@ EOF all count create destroy help quit show update
 (hbnb) quit
 $
 
-Authors
+##Authors
 *Mary Mwethukia marymwethukia65@gmail.com
 *Kenneth Komu kenkomu@gmail.com
