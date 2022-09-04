@@ -4,7 +4,8 @@ base_model module
 """
 import uuid
 from datetime import datetime
-from engine.__init__ import storage
+from models import storage
+
 class BaseModel:
 
     """Class for base model of object hierarchy."""
