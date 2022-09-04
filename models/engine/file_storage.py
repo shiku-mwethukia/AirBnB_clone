@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-"""
-file_storage module
-"""
-import os
-import json
+"""Module for FileStorage class."""
 import datetime
+import json
+import os
+
+
 class FileStorage:
-    """class FileStorage"""
+
+    """Class for serializtion and deserialization of base classes."""
     __file_path = "file.json"
     __objects = {}
 
@@ -23,7 +24,7 @@ class FileStorage:
 
     def save(self):
         """Serialzes __objects to JSON file."""
-        with open(FileStorage.__file_path,"w", encoding="utf-8") as f:
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
             d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
             json.dump(d, f)
 
