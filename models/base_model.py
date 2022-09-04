@@ -24,3 +24,10 @@ class BaseModel:
     def save(self):
         """updates the attribute 'updated_at' with the current datetime"""
         self.updated_at = datetime.utcnow()
+
+    def to_dict(self):
+        new_dict = self.__dict__.copy()
+        if"created_at" in new_dict:
+            new_dict["created_at"] = new_dict["created_at"].strftime(time)
+        if"updated_at" in new_dict:
+            new_dict["updated_at"] = new_dict["updated_at"].strftime(time)
