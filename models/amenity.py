@@ -2,5 +2,5 @@
 """Module for amenity class."""
 from models.base_model import BaseModel
 
-class Amenity:
+class Amenity(BaseModel):
     name = ""
