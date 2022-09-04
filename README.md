@@ -1,18 +1,21 @@
 **Description**
-This is a team project to buila a clone of AirBnB
-The console is a command interpreter that manages objects of distraction between objects and their storage.
-The console creates a new object, retrieve an object from a file, do operations on objects and destroys an object.
+==============
+This is a team project to buila a clone of AirBnB\n
+The console is a command interpreter that manages objects of distraction between objects and their storage.\n
+The console creates a new object, retrieve an object from a file, do operations on objects and destroys an object.\n
 
 All classes are handled by Storage engine in the FileStorage class.
 
 **Installation**
+================
 git clone https://github.com/shiku-mwethukia/AirBnB_clone.git
+
 cd to AirBnB and run the command:
 
 ./console.py
 
 **Execution**
-
+===============
 In interactive mode
 
 $ ./console.py
