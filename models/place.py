@@ -2,7 +2,7 @@
 """Module for place class."""
 from models.base_model import BaseModel
 
-class Place:
+class Place(BaseModel):
     name = ""
     city_id = "City.id"
     user_id =  "User.id"
