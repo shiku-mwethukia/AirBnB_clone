@@ -31,3 +31,4 @@ class BaseModel:
             new_dict["created_at"] = new_dict["created_at"].strftime(time)
         if"updated_at" in new_dict:
             new_dict["updated_at"] = new_dict["updated_at"].strftime(time)
+        return new_dict
