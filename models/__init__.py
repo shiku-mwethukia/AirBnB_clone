@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-
-=======
 #!/usr/bin/python3
-"""
-initialize the models package
-"""
->>>>>>> 31e26df4c17d26f4692c01000ff1441978eb470d
+"""Module for FileStorage autoinit."""
+
+from models.engine.file_storage import FileStorage
+storage = FileStorage()
+storage.reload()
