@@ -1,29 +1,41 @@
 #!/usr/bin/python3
-"""console module"""
-
-import cmd, sys
+"""Defines the HBnB console."""
+import cmd
 import re
 from shlex import split
 from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
+
 
 def parse(arg):
-        curly_braces = re.search(r"\{(.*?)\}", arg)
-        brackets = re.search(r"\[(.*?)\]", arg)
-        if curly_braces is None:
-            if brackets is None:
-                return [i.strip(",") for i in split(arg)]
-            else:
-                lexer = split(arg[:brackets.span()[0]])
-                retl = [i.strip(",") for i in lexer]
-                retl.append(brackets.group())
-                return retl
+    curly_braces = re.search(r"\{(.*?)\}", arg)
+    brackets = re.search(r"\[(.*?)\]", arg)
+    if curly_braces is None:
+        if brackets is None:
+            return [i.strip(",") for i in split(arg)]
         else:
-            lexer = split(arg[:curly_braces.span()[0]])
+            lexer = split(arg[:brackets.span()[0]])
             retl = [i.strip(",") for i in lexer]
-            retl.append(curly_braces.group())
+            retl.append(brackets.group())
             return retl
+    else:
+        lexer = split(arg[:curly_braces.span()[0]])
+        retl = [i.strip(",") for i in lexer]
+        retl.append(curly_braces.group())
+        return retl
+
+
 class HBNBCommand(cmd.Cmd):
-    """class HBNBCommand"""
+    """Defines the HolbertonBnB command interpreter.
+    Attributes:
+        prompt (str): The command prompt.
+    """
 
     prompt = "(hbnb) "
     __classes = {
@@ -35,6 +47,10 @@ class HBNBCommand(cmd.Cmd):
         "Amenity",
         "Review"
     }
+
+    def emptyline(self):
+        """Do nothing upon receiving an empty line."""
+        pass
 
     def default(self, arg):
         """Default behavior for cmd module when input is invalid"""
@@ -65,10 +81,6 @@ class HBNBCommand(cmd.Cmd):
         """EOF signal to exit the program."""
         print("")
         return True
-
-    def emptyline(self):
-        """Do nothing upon receiving an empty line."""
-        pass
 
     def do_create(self, arg):
         """Usage: create <class>
@@ -133,6 +145,16 @@ class HBNBCommand(cmd.Cmd):
                     objl.append(obj.__str__())
             print(objl)
 
+    def do_count(self, arg):
+        """Usage: count <class> or <class>.count()
+        Retrieve the number of instances of a given class."""
+        argl = parse(arg)
+        count = 0
+        for obj in storage.all().values():
+            if argl[0] == obj.__class__.__name__:
+                count += 1
+        print(count)
+
     def do_update(self, arg):
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
        <class>.update(<id>, <attribute_name>, <attribute_value>) or
@@ -182,5 +204,6 @@ class HBNBCommand(cmd.Cmd):
                     obj.__dict__[k] = v
         storage.save()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
