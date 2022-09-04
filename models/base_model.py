@@ -14,4 +14,7 @@ class BaseModel:
     updated_at = DateTime, default=datetime.utcnow
     def __init__(self, *args, **kwargs):
         """Initialization of the base model"""
-        
+    def __str__(self):
+        """String representation of the BaseModel class"""
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
+                                         self.__dict__)
