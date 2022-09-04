@@ -14,3 +14,4 @@ class BaseModel:
     updated_at = DateTime, default=datetime.utcnow
     def __init__(self, *args, **kwargs):
         """Initialization of the base model"""
+        
