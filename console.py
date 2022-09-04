@@ -4,9 +4,8 @@
 import cmd, sys
 import re
 from shlex import split
-class HBNBCommand(cmd.Cmd):
-    """class HBNBCommand"""
-    def parse(arg):
+
+def parse(arg):
         curly_braces = re.search(r"\{(.*?)\}", arg)
         brackets = re.search(r"\[(.*?)\]", arg)
         if curly_braces is None:
@@ -22,6 +21,19 @@ class HBNBCommand(cmd.Cmd):
             retl = [i.strip(",") for i in lexer]
             retl.append(curly_braces.group())
             return retl
+class HBNBCommand(cmd.Cmd):
+    """class HBNBCommand"""
+
+    prompt = "(hbnb) "
+    __classes = {
+        "BaseModel",
+        "User",
+        "State",
+        "City",
+        "Place",
+        "Amenity",
+        "Review"
+    }
 
     def do_quit(self, arg):
         """Quit command to exit the program."""
